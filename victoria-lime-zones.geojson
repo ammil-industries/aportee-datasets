@@ -1,0 +1,2075 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "id": "victoria-lime-zones",
+    "label": "Victoria Lime e-bike parking zones",
+    "source_url": "https://www.google.com/maps/d/kml?mid=1S7Y4HQ6dr7khxBLoDMfmzNYulUuDNQY&forcekml=1",
+    "fetched_at": "2026-09-01T18:00:00Z"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-bay-st-turner-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3746029,
+          48.4353724
+        ]
+      },
+      "properties": {
+        "name": "Bay St. & Turner St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-bridge-st-hillside-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.37353,
+          48.4371529
+        ]
+      },
+      "properties": {
+        "name": "Bridge St. & Hillside Ave.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-cecelia-rd-washington-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3803619,
+          48.4456399
+        ]
+      },
+      "properties": {
+        "name": "Cecelia Rd. & Washington Ave.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-discovery-st-store-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.36962,
+          48.4317557
+        ]
+      },
+      "properties": {
+        "name": "Discovery St. & Store St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-douglas-st-pembroke-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3649697,
+          48.4327158
+        ]
+      },
+      "properties": {
+        "name": "Douglas St. & Pembroke St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-garbally-rd-bridge-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3740457,
+          48.4402824
+        ]
+      },
+      "properties": {
+        "name": "Garbally Rd. & Bridge St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-gorge-rd-carroll-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3837175,
+          48.4435374
+        ]
+      },
+      "properties": {
+        "name": "Gorge Rd. & Carroll St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-gorge-rd-dunedin-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.374189,
+          48.4411849
+        ]
+      },
+      "properties": {
+        "name": "Gorge Rd. & Dunedin St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-gorge-rd-irma-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3880989,
+          48.4434476
+        ]
+      },
+      "properties": {
+        "name": "Gorge Rd. & Irma St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-government-st-bay-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.367208,
+          48.435987
+        ]
+      },
+      "properties": {
+        "name": "Government St. & Bay St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-government-st-discovery-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3676132,
+          48.4318533
+        ]
+      },
+      "properties": {
+        "name": "Government St. & Discovery St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-government-st-queens-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3671838,
+          48.4344633
+        ]
+      },
+      "properties": {
+        "name": "Government St. & Queens Ave.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-hillside-ave-douglas-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3664383,
+          48.4382905
+        ]
+      },
+      "properties": {
+        "name": "Hillside Ave. & Douglas St.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-jutland-rd-cecelia-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.375056,
+          48.4430449
+        ]
+      },
+      "properties": {
+        "name": "Jutland Rd. & Cecelia Rd.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-kings-rd-westbourne-pl",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3650281,
+          48.4365473
+        ]
+      },
+      "properties": {
+        "name": "Kings Rd. & Westbourne Pl.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-napier-ln",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3778611,
+          48.4449049
+        ]
+      },
+      "properties": {
+        "name": "Napier Ln.",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-burnside-selkirk-village-jutland-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3790058,
+          48.4396351
+        ]
+      },
+      "properties": {
+        "name": "Selkirk Village (Jutland Rd.)",
+        "neighbourhood": "Burnside",
+        "style_color": "#e65100"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-blanshard-st-courtney-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.362962,
+          48.4231517
+        ]
+      },
+      "properties": {
+        "name": "Blanshard St. & Courtney St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-blanshard-st-yates-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3621917,
+          48.4262103
+        ]
+      },
+      "properties": {
+        "name": "Blanshard St. & Yates St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-centennial-square",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3662308,
+          48.4283182
+        ]
+      },
+      "properties": {
+        "name": "Centennial Square",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-courtney-st-douglas-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3653727,
+          48.42289
+        ]
+      },
+      "properties": {
+        "name": "Courtney St. & Douglas St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-fort-st-cook-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3535999,
+          48.4233688
+        ]
+      },
+      "properties": {
+        "name": "Fort St. & Cook St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-fort-st-douglas-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3646867,
+          48.424587
+        ]
+      },
+      "properties": {
+        "name": "Fort St. & Douglas St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-fort-st-government-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3680772,
+          48.424932
+        ]
+      },
+      "properties": {
+        "name": "Fort St. & Government St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-fort-st-quadra-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.360617,
+          48.4241467
+        ]
+      },
+      "properties": {
+        "name": "Fort St. & Quadra St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-fort-st-vancouver-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3569403,
+          48.4239277
+        ]
+      },
+      "properties": {
+        "name": "Fort St. & Vancouver St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-government-st-fisgard-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3669131,
+          48.429122
+        ]
+      },
+      "properties": {
+        "name": "Government St. & Fisgard St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-humboldt-st-blanshard-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3636478,
+          48.4205538
+        ]
+      },
+      "properties": {
+        "name": "Humboldt St. & Blanshard St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-pandora-ave-blanshard-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3619797,
+          48.4278544
+        ]
+      },
+      "properties": {
+        "name": "Pandora Ave. & Blanshard St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-quadra-st-rockland-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3596915,
+          48.4225453
+        ]
+      },
+      "properties": {
+        "name": "Quadra St. & Rockland Ave.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-ship-point",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.369843,
+          48.4234721
+        ]
+      },
+      "properties": {
+        "name": "Ship Point",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-store-st-herald-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3698932,
+          48.4300375
+        ]
+      },
+      "properties": {
+        "name": "Store St. & Herald St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-vancouver-st-johnson-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3563364,
+          48.4259663
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Johnson St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-wharf-st-yates-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3705343,
+          48.4272821
+        ]
+      },
+      "properties": {
+        "name": "Wharf St. & Yates St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-yates-st-cook-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3532022,
+          48.4251324
+        ]
+      },
+      "properties": {
+        "name": "Yates St. & Cook St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-yates-st-douglas-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3652178,
+          48.4264155
+        ]
+      },
+      "properties": {
+        "name": "Yates St. & Douglas St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-downtown-yates-st-langley-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3684947,
+          48.4268111
+        ]
+      },
+      "properties": {
+        "name": "Yates St. & Langley St.",
+        "neighbourhood": "Downtown",
+        "style_color": "#097138"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-burdett-ave-linden-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3514195,
+          48.4208917
+        ]
+      },
+      "properties": {
+        "name": "Burdett Ave. & Linden Ave.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-cook-st-dallas-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3574774,
+          48.4079417
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & Dallas Rd.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-cook-st-faithful-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3575387,
+          48.4101902
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & Faithful St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-cook-st-may-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.357482,
+          48.4122147
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & May St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-cook-st-mckenzie-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3562342,
+          48.4148869
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & McKenzie St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-cook-st-oxford-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3567643,
+          48.4142566
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & Oxford St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-cook-st-pakington-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3558404,
+          48.4172655
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & Pakington St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-cook-st-richardson-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3545844,
+          48.4196449
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & Richardson St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-dallas-rd-cambridge-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3556166,
+          48.4075614
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Cambridge St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-dallas-rd-moss-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3514416,
+          48.4060829
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Moss St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-dallas-rd-memorial-cr",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3444755,
+          48.4090405
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Memorial Cr.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-fairfield-rd-vancouver-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3582581,
+          48.4185009
+        ]
+      },
+      "properties": {
+        "name": "Fairfield Rd. & Vancouver St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-humboldt-st-quadra-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3609794,
+          48.4186435
+        ]
+      },
+      "properties": {
+        "name": "Humboldt St. & Quadra St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-kipling-st-thurlow-rd-brooke-st-green",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3443663,
+          48.414231
+        ]
+      },
+      "properties": {
+        "name": "Kipling St. & Thurlow Rd. (Brooke St. Green)",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-linden-ave-may-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3533724,
+          48.4120032
+        ]
+      },
+      "properties": {
+        "name": "Linden Ave. & May St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-linden-ave-oscar-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.352444,
+          48.4154027
+        ]
+      },
+      "properties": {
+        "name": "Linden Ave. & Oscar St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-may-st-memorial-cr",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3453533,
+          48.4109368
+        ]
+      },
+      "properties": {
+        "name": "May St. & Memorial Cr.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-may-st-moss-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.350176,
+          48.4113867
+        ]
+      },
+      "properties": {
+        "name": "May St. & Moss St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-moss-st-richardson-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3481683,
+          48.4188674
+        ]
+      },
+      "properties": {
+        "name": "Moss St. & Richardson St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-moss-st-thurlow-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3483405,
+          48.4162767
+        ]
+      },
+      "properties": {
+        "name": "Moss St. & Thurlow Rd.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-richardson-st-kipling-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3439001,
+          48.4166531
+        ]
+      },
+      "properties": {
+        "name": "Richardson St. & Kipling St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-richardson-st-st-charles-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3377815,
+          48.4161658
+        ]
+      },
+      "properties": {
+        "name": "Richardson St. & St. Charles St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-vancouver-st-burdett-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3575134,
+          48.42167
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Burdett Ave.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-vancouver-st-convent-pl",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3594951,
+          48.4167601
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Convent Pl.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-vancouver-st-mcclure-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3576748,
+          48.4205188
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & McClure St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-vancouver-st-park-blvd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3594554,
+          48.4130057
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Park Blvd.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-fairfield-vancouver-st-sutlej-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3593915,
+          48.4151427
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Sutlej St.",
+        "neighbourhood": "Fairfield",
+        "style_color": "#ffd600"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-blackwood-st-vista-hts",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3542774,
+          48.441456
+        ]
+      },
+      "properties": {
+        "name": "Blackwood St. & Vista Hts.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-cook-st-basil-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3510682,
+          48.4412623
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & Basil Ave.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-cook-st-lang-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3499537,
+          48.4468387
+        ]
+      },
+      "properties": {
+        "name": "Cook St. & Lang St.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-finlayson-st-mars-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3538588,
+          48.4471549
+        ]
+      },
+      "properties": {
+        "name": "Finlayson St. & Mars St.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-graham-st-kings-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3557795,
+          48.4378317
+        ]
+      },
+      "properties": {
+        "name": "Graham St. & Kings Rd.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-graham-st-topaz-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3573002,
+          48.4426995
+        ]
+      },
+      "properties": {
+        "name": "Graham St. & Topaz Ave.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-graham-st-hillside-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3566198,
+          48.4400095
+        ]
+      },
+      "properties": {
+        "name": "Graham St. & Hillside Ave.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-jackson-st-finlayson-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3580577,
+          48.4465404
+        ]
+      },
+      "properties": {
+        "name": "Jackson St. & Finlayson St.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-jackson-st-tolmie-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3587852,
+          48.4491007
+        ]
+      },
+      "properties": {
+        "name": "Jackson St. & Tolmie Ave.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-kings-rd-wark-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3602728,
+          48.4372649
+        ]
+      },
+      "properties": {
+        "name": "Kings Rd. & Wark St.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-quadra-st-tolmie-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3613806,
+          48.4489915
+        ]
+      },
+      "properties": {
+        "name": "Quadra St. & Tolmie Ave.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-hillside-quadra-topaz-st-blanshard-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3632528,
+          48.4421194
+        ]
+      },
+      "properties": {
+        "name": "Topaz St. & Blanshard St.",
+        "neighbourhood": "Hillside Quadra",
+        "style_color": "#0097a7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-croft-st-simcoe-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.375653,
+          48.4159661
+        ]
+      },
+      "properties": {
+        "name": "Croft St. & Simcoe St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-dallas-rd-boyd-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3800795,
+          48.4131173
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Boyd St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-dallas-rd-dock-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3837284,
+          48.4154855
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Dock St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-dallas-rd-government-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3742429,
+          48.4103135
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Government St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-dallas-rd-menzies-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3774495,
+          48.4120997
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Menzies St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-dallas-rd-olympia-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3708424,
+          48.4091811
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Olympia Ave.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-dallas-rd-ontario-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3846268,
+          48.4215095
+        ]
+      },
+      "properties": {
+        "name": "Dallas Rd. & Ontario St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-five-corners-menzies-st-toronto-st-simcoe-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3735222,
+          48.4153802
+        ]
+      },
+      "properties": {
+        "name": "Five Corners (Menzies St., Toronto St. & Simcoe St.)",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-government-st-michigan-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.369162,
+          48.4171275
+        ]
+      },
+      "properties": {
+        "name": "Government St. & Michigan St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-government-st-niagara-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3722373,
+          48.4121588
+        ]
+      },
+      "properties": {
+        "name": "Government St. & Niagara St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-government-st-simcoe-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3703568,
+          48.41352
+        ]
+      },
+      "properties": {
+        "name": "Government St. & Simcoe St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-menzies-st-michigan-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3728135,
+          48.4169832
+        ]
+      },
+      "properties": {
+        "name": "Menzies St. & Michigan St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-menzies-st-quebec-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3713428,
+          48.420227
+        ]
+      },
+      "properties": {
+        "name": "Menzies St. & Quebec St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-montreal-st-superior-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3796212,
+          48.4208998
+        ]
+      },
+      "properties": {
+        "name": "Montreal St. & Superior St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-niagara-st-boyd-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3777839,
+          48.4148084
+        ]
+      },
+      "properties": {
+        "name": "Niagara St. & Boyd St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-niagara-st-menzies-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3758158,
+          48.4139613
+        ]
+      },
+      "properties": {
+        "name": "Niagara St. & Menzies St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-niagara-st-montreal-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3829593,
+          48.4176066
+        ]
+      },
+      "properties": {
+        "name": "Niagara St. & Montreal St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-oswego-st-niagara-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3804554,
+          48.4161058
+        ]
+      },
+      "properties": {
+        "name": "Oswego St. & Niagara St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-oswego-st-ontario-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3780684,
+          48.4182787
+        ]
+      },
+      "properties": {
+        "name": "Oswego St. & Ontario St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-simcoe-st-douglas-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.368049,
+          48.4125219
+        ]
+      },
+      "properties": {
+        "name": "Simcoe St. & Douglas St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-st-lawrence-st-michigan-st-fisherman-s-wharf",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3819358,
+          48.4212622
+        ]
+      },
+      "properties": {
+        "name": "St. Lawrence St. & Michigan St. (Fisherman's Wharf)",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-superior-st-oswego-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3762267,
+          48.4197419
+        ]
+      },
+      "properties": {
+        "name": "Superior St. & Oswego St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-james-bay-toronto-st-douglas-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3663957,
+          48.4158966
+        ]
+      },
+      "properties": {
+        "name": "Toronto St. & Douglas St.",
+        "neighbourhood": "James Bay",
+        "style_color": "#673ab7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-north-park-blanshard-st-caledonia-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3613593,
+          48.4311188
+        ]
+      },
+      "properties": {
+        "name": "Blanshard St. & Caledonia Ave.",
+        "neighbourhood": "North Park",
+        "style_color": "#a52714"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-north-park-pembroke-st-quadra-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3590603,
+          48.432261
+        ]
+      },
+      "properties": {
+        "name": "Pembroke St. & Quadra St.",
+        "neighbourhood": "North Park",
+        "style_color": "#a52714"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-north-park-queens-ave-dowler-pl",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3611441,
+          48.4339249
+        ]
+      },
+      "properties": {
+        "name": "Queens Ave. & Dowler Pl.",
+        "neighbourhood": "North Park",
+        "style_color": "#a52714"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-north-park-vancouver-st-balmoral-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3559183,
+          48.4289803
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Balmoral Rd.",
+        "neighbourhood": "North Park",
+        "style_color": "#a52714"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-north-park-vancouver-st-princess-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3551875,
+          48.4329367
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Princess St.",
+        "neighbourhood": "North Park",
+        "style_color": "#a52714"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-north-park-vancouver-st-empress-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3551619,
+          48.4347294
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Empress Ave.",
+        "neighbourhood": "North Park",
+        "style_color": "#a52714"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-north-park-vancouver-st-green-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3557337,
+          48.4310628
+        ]
+      },
+      "properties": {
+        "name": "Vancouver St. & Green St.",
+        "neighbourhood": "North Park",
+        "style_color": "#a52714"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-oaklands-kings-rd-empire-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3504876,
+          48.4385623
+        ]
+      },
+      "properties": {
+        "name": "Kings Rd. & Empire St.",
+        "neighbourhood": "Oaklands",
+        "style_color": "#ff5252"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-bay-st-henry-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3835843,
+          48.4321006
+        ]
+      },
+      "properties": {
+        "name": "Bay St. & Henry St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-catherine-st-skinner-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.384922,
+          48.4358366
+        ]
+      },
+      "properties": {
+        "name": "Catherine St. & Skinner St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-catherine-st-wilson-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3848477,
+          48.433054
+        ]
+      },
+      "properties": {
+        "name": "Catherine St. & Wilson St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-central-spur-rd-bridges-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3805965,
+          48.434726
+        ]
+      },
+      "properties": {
+        "name": "Central Spur Rd. & Bridges Park",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-craigflower-rd-styles-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3895674,
+          48.438316
+        ]
+      },
+      "properties": {
+        "name": "Craigflower Rd. & Styles St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-e-n-rail-trail-wilson-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.390412,
+          48.4326562
+        ]
+      },
+      "properties": {
+        "name": "E&N Rail Trail & Wilson St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-esquimalt-rd-barnard-ave",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3930471,
+          48.4310611
+        ]
+      },
+      "properties": {
+        "name": "Esquimalt Rd. & Barnard Ave.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-esquimalt-rd-robert-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3888974,
+          48.4303452
+        ]
+      },
+      "properties": {
+        "name": "Esquimalt Rd. & Robert St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-harbour-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3762919,
+          48.4303747
+        ]
+      },
+      "properties": {
+        "name": "Harbour Rd.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-kimta-rd-catherine-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3841057,
+          48.4291952
+        ]
+      },
+      "properties": {
+        "name": "Kimta Rd. & Catherine St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-kimta-rd-paul-kane-pl",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3807053,
+          48.4277555
+        ]
+      },
+      "properties": {
+        "name": "Kimta Rd. & Paul Kane Pl.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-langford-st-mccaskill-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3919105,
+          48.4348955
+        ]
+      },
+      "properties": {
+        "name": "Langford St. & McCaskill St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-mary-st-esquimalt-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3859086,
+          48.4300608
+        ]
+      },
+      "properties": {
+        "name": "Mary St. & Esquimalt Rd.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-pine-st-dominion-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3938735,
+          48.4362021
+        ]
+      },
+      "properties": {
+        "name": "Pine St. & Dominion Rd.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-raynor-ave-craigflower-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3881906,
+          48.4363107
+        ]
+      },
+      "properties": {
+        "name": "Raynor Ave. & Craigflower Rd.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-russell-st-langford-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3873195,
+          48.434857
+        ]
+      },
+      "properties": {
+        "name": "Russell St. & Langford St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-selkirk-ave-arm-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3928886,
+          48.4411399
+        ]
+      },
+      "properties": {
+        "name": "Selkirk Ave. & Arm St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-selkirk-ave-styles-st",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3888504,
+          48.4393406
+        ]
+      },
+      "properties": {
+        "name": "Selkirk Ave. & Styles St.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-songhees-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3759061,
+          48.4261506
+        ]
+      },
+      "properties": {
+        "name": "Songhees Park",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-tyee-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3780994,
+          48.4304726
+        ]
+      },
+      "properties": {
+        "name": "Tyee Rd.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-tyee-rd-kimta-rd-songhees-rd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3772919,
+          48.4273217
+        ]
+      },
+      "properties": {
+        "name": "Tyee Rd., Kimta Rd. & Songhees Rd.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-lime-victoria-west-tyee-rd-regatta-lndg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.3828837,
+          48.4367431
+        ]
+      },
+      "properties": {
+        "name": "Tyee Rd. & Regatta Lndg.",
+        "neighbourhood": "Victoria West",
+        "style_color": "#0288d1"
+      }
+    }
+  ]
+}
