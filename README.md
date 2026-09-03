@@ -24,6 +24,17 @@ The file is consumed through this stable raw URL:
 https://raw.githubusercontent.com/ammil-industries/aportee-datasets/main/victoria-lime-zones.geojson
 ```
 
+`victoria-lime-logo.svg` is the official neon-green horizontal Lime logo from
+[Lime's public press portal](https://www.li.me/about/press). Lime owns the Lime
+name, logo, and associated trademarks; the asset is included only to identify
+the corresponding dataset in the à portée interface.
+
+The logo is consumed through this stable raw URL:
+
+```text
+https://raw.githubusercontent.com/ammil-industries/aportee-datasets/main/victoria-lime-logo.svg
+```
+
 After updating the file, rerun the reviewed custom-access definition and publish
 the resulting development tileset. Updating this repository alone does not
 change the website.
