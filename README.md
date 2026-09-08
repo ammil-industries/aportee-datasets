@@ -38,3 +38,36 @@ https://raw.githubusercontent.com/ammil-industries/aportee-datasets/main/victori
 After updating the file, rerun the reviewed custom-access definition and publish
 the resulting development tileset. Updating this repository alone does not
 change the website.
+
+## Canada raised crosswalks
+
+`canada-raised-crosswalks.geojson` is a deliberately non-exhaustive national
+inventory. It combines openly licensed municipal records that explicitly call
+a feature a raised crosswalk with a strict OpenStreetMap fallback. An OSM
+feature is included only when it has `traffic_calming=table` and either
+`highway=crossing` or `footway=crossing`; ordinary speed tables, speed humps,
+and raised intersections are excluded.
+
+The current authoritative source is Halifax Regional Municipality's
+[Traffic Calming Infrastructure](https://data-hrm.hub.arcgis.com/datasets/traffic-calming-infrastructure)
+layer, filtered to installed assets with code `RSDCRW`. The fallback uses the
+13 provincial and territorial Canada extracts published by
+[Geofabrik](https://download.geofabrik.de/north-america/canada.html) under the
+[OpenStreetMap ODbL](https://www.openstreetmap.org/copyright). Municipal records
+take precedence over OSM features within 20 metres. Source IDs, evidence class,
+licence, snapshot timestamps, and the exact counts are retained in the file.
+
+Rebuild the snapshot with `osmium-tool` installed:
+
+```sh
+python3 build-canada-raised-crosswalks.py \
+  --pbf-dir /path/to/provincial-osm-extracts \
+  --output canada-raised-crosswalks.geojson
+```
+
+The file and icon are consumed through these stable raw URLs:
+
+```text
+https://raw.githubusercontent.com/ammil-industries/aportee-datasets/main/canada-raised-crosswalks.geojson
+https://raw.githubusercontent.com/ammil-industries/aportee-datasets/main/canada-raised-crosswalks.svg
+```
