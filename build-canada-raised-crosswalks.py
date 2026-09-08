@@ -1,368 +1,381 @@
 #!/usr/bin/env python3
-"""Build the reviewed Canada raised-crosswalk point snapshot.
+"""Build municipal-recorded raised crosswalks; never infer them from OSM tags.
 
-The national fallback is deliberately strict: an OpenStreetMap feature must be
-both a speed table and a pedestrian crossing.  Generic speed tables and speed
-humps are not raised crosswalks and are excluded.  Where an openly licensed
-municipal inventory explicitly identifies a raised crosswalk, that record wins
-over nearby OSM geometry.
+The source allowlist requires an explicit raised-crosswalk classification,
+an in-service status, a traceable municipal record ID and reviewed reuse terms.
+Municipal classification is evidence, not independent field verification.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
-import subprocess
-import tempfile
 import urllib.parse
 import urllib.request
 from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
-
-HALIFAX_LAYER = (
-    "https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/"
-    "Traffic_Calming_Infrastructure/FeatureServer/0"
+SOURCES = (
+    {
+        "key": "halifax",
+        "municipality": "Halifax Regional Municipality",
+        "province": "NS",
+        "layer": "https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/Traffic_Calming_Infrastructure/FeatureServer/0",
+        "url": "https://data-hrm.hub.arcgis.com/datasets/traffic-calming-infrastructure",
+        "criteria": {"ASSETCODE": "RSDCRW", "ASSETSTAT": "INS"},
+        "id_field": "ASSETID",
+        "location_fields": ["LOCATION"],
+        "year_field": "INSTYR",
+        "licence": "Open Government Licence — Halifax",
+        "licence_url": "https://www.halifax.ca/home/open-data/open-data-licence",
+        "attribution": "Contains information licensed under the Open Government Licence – Halifax.",
+    },
+    {
+        "key": "surrey",
+        "municipality": "City of Surrey",
+        "province": "BC",
+        "layer": "https://gisservices.surrey.ca/arcgis/rest/services/OpenData/MapServer/116",
+        "url": "https://www.arcgis.com/home/item.html?id=9dd77c3dbf544a1989ca0f95371b6da1",
+        "criteria": {"DEVICE_TYPE2": "Raised Crossing", "STATUS": "In Service"},
+        "id_field": "FACILITYID",
+        "fallback_id_field": "OBJECTID",
+        "location_fields": ["LOCATION"],
+        "year_field": "YEAR_BUILT",
+        "licence": "Open Government License — City of Surrey",
+        "licence_url": "https://opendata-surrey.hub.arcgis.com/pages/55089a19491a4fe59a41e059fd8af708",
+        "attribution": "Contains information licensed under the Open Government License – City of Surrey.",
+    },
+    {
+        "key": "kitchener",
+        "municipality": "City of Kitchener",
+        "province": "ON",
+        "layer": "https://services1.arcgis.com/qAo1OsXi67t7XgmS/arcgis/rest/services/Traffic_Calming/FeatureServer/0",
+        "url": "https://www.arcgis.com/home/item.html?id=2751362c6d5046d997fe166aa6f6e11a",
+        "criteria": {"CATEGORY": "RAISED CROSSWALK", "STATUS": "ACTIVE"},
+        "id_field": "TRAFFICCALMINGID",
+        "location_fields": ["STREET", "LOCATION_DESCRIPTION"],
+        "year_field": "INSTALL_YEAR",
+        "licence": "Open Government Licence — The Corporation of the City of Kitchener",
+        "licence_url": "https://www.arcgis.com/home/item.html?id=2751362c6d5046d997fe166aa6f6e11a",
+        "attribution": "Contains information licensed under the Open Government Licence - The Corporation of the City of Kitchener.",
+    },
 )
-HALIFAX_DATASET = "https://data-hrm.hub.arcgis.com/datasets/traffic-calming-infrastructure"
-OSM_SOURCE = "https://download.geofabrik.de/north-america/canada.html"
-OSM_LICENSE = "https://www.openstreetmap.org/copyright"
-DEDUPLICATION_METRES = 20.0
 
 
 def _get_json(url: str, params: dict[str, str]) -> dict[str, Any]:
-    request_url = f"{url}?{urllib.parse.urlencode(params)}"
     request = urllib.request.Request(
-        request_url,
-        headers={"User-Agent": "aportee-datasets/1.0 (https://aportee.ca)"},
+        f"{url}?{urllib.parse.urlencode(params)}",
+        headers={"User-Agent": "aportee-datasets/2.0 (https://aportee.ca)"},
     )
     with urllib.request.urlopen(request, timeout=60) as response:
         value = json.load(response)
-    if not isinstance(value, dict):
-        raise ValueError(f"expected a JSON object from {url}")
+    if not isinstance(value, dict) or "error" in value:
+        raise ValueError(f"invalid ArcGIS response from {url}: {value}")
     return value
 
 
-def _halifax_features() -> list[dict[str, Any]]:
-    collection = _get_json(
-        f"{HALIFAX_LAYER}/query",
-        {
-            "where": "ASSETCODE='RSDCRW' AND ASSETSTAT='INS'",
-            "outFields": (
-                "TRCMID,ASSETID,ASSETCODE,OWNER,LOCGEN,INSTYR,ASSETDESC,"
-                "ASSETSTAT,LOCATION,SDATE"
-            ),
-            "outSR": "4326",
-            "returnGeometry": "true",
-            "f": "geojson",
-        },
+def _where(source: dict[str, Any]) -> str:
+    return " AND ".join(f"{key}='{value}'" for key, value in source["criteria"].items())
+
+
+def _fetch_records(source: dict[str, Any]) -> list[dict[str, Any]]:
+    """Fetch by enumerated IDs, avoiding silent ArcGIS transfer-limit truncation."""
+    url = f"{source['layer']}/query"
+    index = _get_json(
+        url, {"f": "json", "where": _where(source), "returnIdsOnly": "true"}
     )
-    output: list[dict[str, Any]] = []
-    for feature in collection.get("features", []):
-        properties = feature.get("properties") or {}
-        source_id = str(properties.get("ASSETID") or properties.get("TRCMID") or "").strip()
-        geometry = feature.get("geometry") or {}
-        coordinates = geometry.get("coordinates")
-        if not source_id or geometry.get("type") != "Point" or not _valid_point(coordinates):
-            continue
-        location = str(properties.get("LOCATION") or "").strip()
-        output.append(
-            {
-                "type": "Feature",
-                "id": f"halifax:{source_id}",
-                "geometry": {"type": "Point", "coordinates": coordinates[:2]},
-                "properties": {
-                    "name": f"Raised crosswalk — {location}" if location else "Raised crosswalk",
-                    "feature_type": "raised_crosswalk",
-                    "source": "Halifax Regional Municipality",
-                    "source_id": source_id,
-                    "source_url": HALIFAX_DATASET,
-                    "evidence": "authoritative_inventory",
-                    "licence": "Open Government Licence — Halifax",
-                    "municipality": "Halifax Regional Municipality",
-                    "install_year": properties.get("INSTYR"),
-                },
-            }
+    ids = index.get("objectIds")
+    id_field = index.get("objectIdFieldName")
+    if not isinstance(ids, list) or not ids or not isinstance(id_field, str):
+        raise ValueError(
+            f"{source['key']}: missing/empty object ID list; review source before publishing"
         )
-    return output
+    if any(type(value) is not int for value in ids) or len(set(ids)) != len(ids):
+        raise ValueError(f"{source['key']}: invalid or duplicate object IDs")
+    fields = list(
+        dict.fromkeys(
+            [
+                id_field,
+                source["id_field"],
+                *source["criteria"],
+                *source["location_fields"],
+                source["year_field"],
+            ]
+        )
+    )
+    records = []
+    for offset in range(0, len(ids), 200):
+        batch = ids[offset : offset + 200]
+        page = _get_json(
+            url,
+            {
+                "f": "json",
+                "where": _where(source),
+                "objectIds": ",".join(map(str, batch)),
+                "outFields": ",".join(fields),
+                "returnGeometry": "true",
+                "outSR": "4326",
+            },
+        )
+        reference = page.get("spatialReference") or {}
+        if reference.get("latestWkid", reference.get("wkid")) != 4326:
+            raise ValueError(f"{source['key']}: response is not EPSG:4326")
+        features = page.get("features")
+        if not isinstance(features, list) or page.get("exceededTransferLimit"):
+            raise ValueError(f"{source['key']}: incomplete feature response")
+        returned = [
+            (feature.get("attributes") or {}).get(id_field) for feature in features
+        ]
+        if len(returned) != len(batch) or set(returned) != set(batch):
+            raise ValueError(
+                f"{source['key']}: missing/duplicate/changed source records; retry and review"
+            )
+        records.extend(features)
+    return records
 
 
 def _valid_point(value: object) -> bool:
     return (
         isinstance(value, list)
         and len(value) >= 2
-        and all(isinstance(item, (int, float)) and math.isfinite(item) for item in value[:2])
+        and all(
+            type(item) in (int, float) and math.isfinite(item) for item in value[:2]
+        )
         and -180 <= value[0] <= 180
         and -90 <= value[1] <= 90
     )
 
 
-def _iter_geojson_sequence(path: Path) -> Iterable[dict[str, Any]]:
-    with path.open(encoding="utf-8") as handle:
-        for line in handle:
-            line = line.lstrip("\x1e").strip()
-            if line:
-                value = json.loads(line)
-                if isinstance(value, dict):
-                    yield value
-
-
-def _line_coordinates(geometry: dict[str, Any]) -> list[list[float]]:
-    geometry_type = geometry.get("type")
-    coordinates = geometry.get("coordinates")
-    if geometry_type == "LineString" and isinstance(coordinates, list):
-        return [point for point in coordinates if _valid_point(point)]
-    if geometry_type == "MultiLineString" and isinstance(coordinates, list):
-        return [
-            point
-            for line in coordinates
-            if isinstance(line, list)
-            for point in line
-            if _valid_point(point)
-        ]
-    return []
-
-
-def _midpoint(points: list[list[float]]) -> list[float]:
-    if not points:
-        raise ValueError("cannot calculate a midpoint without coordinates")
-    if len(points) == 1:
-        return points[0][:2]
-    lengths = [_haversine(a, b) for a, b in zip(points, points[1:], strict=False)]
-    target = sum(lengths) / 2
-    elapsed = 0.0
-    for start, end, length in zip(points, points[1:], lengths, strict=True):
-        if elapsed + length >= target:
-            fraction = 0 if length == 0 else (target - elapsed) / length
-            return [
-                start[0] + fraction * (end[0] - start[0]),
-                start[1] + fraction * (end[1] - start[1]),
-            ]
-        elapsed += length
-    return points[-1][:2]
-
-
-def _haversine(left: list[float], right: list[float]) -> float:
-    lon1, lat1, lon2, lat2 = map(math.radians, [left[0], left[1], right[0], right[1]])
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-    value = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
-    return 6_371_008.8 * 2 * math.atan2(math.sqrt(value), math.sqrt(1 - value))
-
-
-def _osm_timestamp(pbf: Path) -> str | None:
-    result = subprocess.run(
-        ["osmium", "fileinfo", "-g", "header.option.osmosis_replication_timestamp", str(pbf)],
-        check=True,
-        capture_output=True,
-        text=True,
+def _distance(left: list[float], right: list[float]) -> float:
+    lon1, lat1, lon2, lat2 = map(math.radians, [*left[:2], *right[:2]])
+    value = (
+        math.sin((lat2 - lat1) / 2) ** 2
+        + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
     )
-    return result.stdout.strip() or None
+    return 6_371_008.8 * 2 * math.asin(math.sqrt(min(1.0, max(0.0, value))))
 
 
-def _osm_features(
-    pbf_paths: list[Path],
-) -> tuple[list[dict[str, Any]], dict[str, str | None], dict[str, Any]]:
-    candidates: dict[str, dict[str, Any]] = {}
-    snapshots: dict[str, str | None] = {}
-    with tempfile.TemporaryDirectory(prefix="raised-crosswalks-") as directory:
-        root = Path(directory)
-        for pbf in pbf_paths:
-            snapshots[pbf.name] = _osm_timestamp(pbf)
-            filtered = root / f"{pbf.stem}-tables.osm.pbf"
-            exported = root / f"{pbf.stem}-tables.geojsonseq"
-            subprocess.run(
-                [
-                    "osmium",
-                    "tags-filter",
-                    str(pbf),
-                    "nwr/traffic_calming=table",
-                    "-o",
-                    str(filtered),
-                    "--overwrite",
-                ],
-                check=True,
-            )
-            subprocess.run(
-                [
-                    "osmium",
-                    "export",
-                    str(filtered),
-                    "-f",
-                    "geojsonseq",
-                    "-u",
-                    "type_id",
-                    "-a",
-                    "version,timestamp",
-                    "-o",
-                    str(exported),
-                    "--overwrite",
-                ],
-                check=True,
-            )
-            for feature in _iter_geojson_sequence(exported):
-                properties = feature.get("properties") or {}
-                if properties.get("traffic_calming") != "table" or not (
-                    properties.get("highway") == "crossing"
-                    or properties.get("footway") == "crossing"
-                ):
-                    continue
-                source_id = feature.get("id")
-                geometry = feature.get("geometry") or {}
-                if not isinstance(source_id, str) or not source_id:
-                    continue
-                if geometry.get("type") == "Point" and _valid_point(geometry.get("coordinates")):
-                    point = geometry["coordinates"][:2]
-                    vertices = [point]
-                else:
-                    vertices = _line_coordinates(geometry)
-                    if not vertices:
-                        continue
-                    point = _midpoint(vertices)
-                candidates[source_id] = {
-                    "point": point,
-                    "vertices": vertices,
-                    "properties": properties,
-                    "extract": pbf.name,
-                }
+def _geometry(raw: dict[str, Any]) -> tuple[list[float], dict[str, Any]]:
+    if "x" in raw and "y" in raw:
+        point = [raw["x"], raw["y"]]
+        if _valid_point(point):
+            return point, {"type": "Point", "coordinates": point}
+    paths = raw.get("paths")
+    if (
+        not isinstance(paths, list)
+        or not paths
+        or any(
+            not isinstance(path, list)
+            or len(path) < 2
+            or not all(_valid_point(p) for p in path)
+            for path in paths
+        )
+    ):
+        raise ValueError("expected a valid point or polyline")
+    paths = [[point[:2] for point in path] for path in paths]
+    # Walk only real segments, never an invented link between multipart lines.
+    segments = [
+        (a, b, _distance(a, b))
+        for path in paths
+        for a, b in zip(path, path[1:], strict=False)
+    ]
+    length = sum(segment[2] for segment in segments)
+    if length <= 0:
+        raise ValueError("zero-length source polyline")
+    remaining = length / 2
+    point = paths[-1][-1]
+    for start, end, segment_length in segments:
+        if segment_length > 0 and remaining <= segment_length:
+            fraction = remaining / segment_length
+            point = [start[i] + fraction * (end[i] - start[i]) for i in range(2)]
+            break
+        remaining -= segment_length
+    native = (
+        {"type": "LineString", "coordinates": paths[0]}
+        if len(paths) == 1
+        else {
+            "type": "MultiLineString",
+            "coordinates": paths,
+        }
+    )
+    return point, native
 
-    # A crossing way often carries the same tags as one of its member nodes.
-    # Prefer the node and drop only ways that contain an exact strict node; a
-    # proximity-only merge would collapse distinct crossings at small junctions.
-    node_coordinates = {
-        (round(value["point"][0], 7), round(value["point"][1], 7))
-        for source_id, value in candidates.items()
-        if source_id.startswith("n")
-    }
-    output: list[dict[str, Any]] = []
-    way_duplicates_removed = 0
-    for source_id, value in sorted(candidates.items()):
-        if source_id.startswith("w") and any(
-            (round(point[0], 7), round(point[1], 7)) in node_coordinates
-            for point in value["vertices"]
+
+def _normalize(
+    source: dict[str, Any], records: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    output = []
+    seen = {}
+    for record in records:
+        attributes = record.get("attributes") or {}
+        # Recheck returned attributes: do not trust a URL filter as validation.
+        if any(
+            attributes.get(key) != value for key, value in source["criteria"].items()
         ):
-            way_duplicates_removed += 1
-            continue
-        properties = value["properties"]
-        name = str(properties.get("name") or "").strip()
-        output.append(
+            raise ValueError(
+                f"{source['key']}: record is not an explicitly raised, in-service crosswalk"
+            )
+        raw_id = attributes.get(source["id_field"])
+        id_basis = "municipal_asset_id"
+        if raw_id is None or not str(raw_id).strip():
+            fallback = source.get("fallback_id_field")
+            raw_id = attributes.get(fallback) if fallback else None
+            id_basis = "service_object_id_snapshot_scoped"
+        if raw_id is None or isinstance(raw_id, bool) or not str(raw_id).strip():
+            raise ValueError(f"{source['key']}: missing municipal record ID")
+        source_id = str(raw_id).strip()
+        if id_basis == "service_object_id_snapshot_scoped":
+            source_id = f"objectid:{source_id}"
+        point, native = _geometry(record.get("geometry") or {})
+        if source_id in seen:
+            previous = seen[source_id]
+            previous_attributes = previous["properties"]["source_attributes"]
+
+            def comparable(attrs):
+                return {key: value for key, value in attrs.items() if key != "OBJECTID"}
+
+            # Same asset ID, identical attributes and <=1 cm point displacement:
+            # duplicated municipal record, not a proximity-only crossing match.
+            if (
+                id_basis == "municipal_asset_id"
+                and native["type"]
+                == previous["properties"]["source_geometry"]["type"]
+                == "Point"
+                and comparable(attributes) == comparable(previous_attributes)
+                and _distance(point, previous["geometry"]["coordinates"]) <= 0.01
+            ):
+                previous["properties"]["duplicate_source_records"].append(record)
+                continue
+            raise ValueError(
+                f"{source['key']}: conflicting duplicate municipal asset ID {source_id}"
+            )
+        location = " — ".join(
+            str(attributes.get(field) or "").strip()
+            for field in source["location_fields"]
+            if attributes.get(field)
+        )
+        feature = {
+            "type": "Feature",
+            "id": f"{source['key']}:{source_id}",
+            "geometry": {"type": "Point", "coordinates": point},
+            "properties": {
+                "name": f"Raised crosswalk — {location}"
+                if location
+                else "Raised crosswalk",
+                "feature_type": "raised_crosswalk",
+                "source": source["municipality"],
+                "source_id": source_id,
+                "source_url": source["url"],
+                "source_id_basis": id_basis,
+                "duplicate_source_records": [],
+                "source_layer_url": source["layer"],
+                "source_attributes": attributes,
+                "source_geometry": native,
+                "source_geometry_crs": "EPSG:4326",
+                "evidence": "authoritative_inventory",
+                "verification": "municipal_record_not_field_verified",
+                "status": "in_service",
+                "licence": source["licence"],
+                "licence_url": source["licence_url"],
+                "attribution": source["attribution"],
+                "municipality": source["municipality"],
+                "province": source["province"],
+                "install_year": attributes.get(source["year_field"]),
+            },
+        }
+        output.append(feature)
+        seen[source_id] = feature
+    return output
+
+
+def build() -> dict[str, Any]:
+    features = []
+    receipts = []
+    for source in SOURCES:
+        records = _fetch_records(source)
+        records.sort(
+            key=lambda record: (
+                str(record["attributes"].get(source["id_field"])),
+                str(record["attributes"].get("OBJECTID")),
+            )
+        )
+        normalized = _normalize(source, records)
+        features.extend(normalized)
+        receipts.append(
             {
-                "type": "Feature",
-                "id": f"osm:{source_id}",
-                "geometry": {"type": "Point", "coordinates": value["point"]},
-                "properties": {
-                    "name": name or "Raised crosswalk",
-                    "feature_type": "raised_crosswalk",
-                    "source": "OpenStreetMap",
-                    "source_id": source_id,
-                    "source_url": f"https://www.openstreetmap.org/{'node' if source_id[0] == 'n' else 'way'}/{source_id[1:]}",
-                    "source_extract": value["extract"],
-                    "evidence": "community_mapped_table_and_crossing",
-                    "licence": "Open Data Commons Open Database License 1.0",
-                    "osm_version": properties.get("@version"),
-                    "osm_timestamp": properties.get("@timestamp"),
-                },
+                "name": source["municipality"],
+                "url": source["url"],
+                "layer_url": source["layer"],
+                "filter": _where(source),
+                "licence": source["licence"],
+                "licence_url": source["licence_url"],
+                "attribution": source["attribution"],
+                "retrieved_at": datetime.now(UTC).isoformat(),
+                "count": len(normalized),
+                "raw_record_count": len(records),
+                "duplicate_records_collapsed": len(records) - len(normalized),
+                "records_sha256": hashlib.sha256(
+                    json.dumps(records, sort_keys=True, allow_nan=False).encode()
+                ).hexdigest(),
             }
         )
-    by_extract = Counter(
-        feature["properties"]["source_extract"] for feature in output
-    )
-    return (
-        output,
-        snapshots,
-        {
-            "strict_candidates": len(candidates),
-            "way_duplicates_removed": way_duplicates_removed,
-            "by_extract": dict(sorted(by_extract.items())),
-        },
-    )
-
-
-def _deduplicate(
-    authoritative: list[dict[str, Any]], fallback: list[dict[str, Any]]
-) -> tuple[list[dict[str, Any]], int]:
-    authoritative_points = [feature["geometry"]["coordinates"] for feature in authoritative]
-    kept = list(authoritative)
-    removed = 0
-    for feature in fallback:
-        point = feature["geometry"]["coordinates"]
-        if any(_haversine(point, other) <= DEDUPLICATION_METRES for other in authoritative_points):
-            removed += 1
-        else:
-            kept.append(feature)
-    return kept, removed
-
-
-def build(pbf_dir: Path) -> dict[str, Any]:
-    pbf_paths = sorted(pbf_dir.glob("*-latest.osm.pbf"))
-    if not pbf_paths:
-        raise ValueError(f"no *-latest.osm.pbf files found in {pbf_dir}")
-    authoritative = _halifax_features()
-    osm, snapshots, osm_counts = _osm_features(pbf_paths)
-    features, removed = _deduplicate(authoritative, osm)
     features.sort(key=lambda feature: feature["id"])
-    now = datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     return {
         "type": "FeatureCollection",
         "metadata": {
             "label": "Canada raised crosswalks",
-            "description": (
-                "A non-exhaustive inventory of explicitly identified raised crosswalks. "
-                "It combines openly licensed municipal inventory records with strict "
-                "OpenStreetMap table-plus-crossing features."
-            ),
-            "generated_at": now,
-            "coverage": "Canada (non-exhaustive; mapping completeness varies by municipality)",
+            "description": "Non-exhaustive municipal inventory records explicitly identifying in-service raised crosswalks. No OSM-derived or inferred crossings; not independently field verified.",
+            "generated_at": datetime.now(UTC).isoformat(),
+            "coverage": "Canada scope; current municipal coverage: Halifax, Surrey and Kitchener only. Absence is not evidence that a municipality has no raised crosswalks.",
             "feature_type": "raised_crosswalk",
-            "excluded": ["generic speed tables", "speed humps", "raised intersections"],
-            "deduplication_metres": DEDUPLICATION_METRES,
-            "counts": {
-                "authoritative_inventory": len(authoritative),
-                "osm_strict_candidates": osm_counts["strict_candidates"],
-                "osm_way_duplicates_removed": osm_counts["way_duplicates_removed"],
-                "osm_strict_before_authoritative_deduplication": len(osm),
-                "osm_removed_near_authoritative": removed,
-                "osm_by_extract": osm_counts["by_extract"],
-                "total": len(features),
-            },
-            "sources": [
-                {
-                    "name": "Halifax Traffic Calming Infrastructure",
-                    "url": HALIFAX_DATASET,
-                    "filter": "ASSETCODE=RSDCRW and ASSETSTAT=INS",
-                    "licence": "Open Government Licence — Halifax",
-                },
-                {
-                    "name": "OpenStreetMap Canada extracts",
-                    "url": OSM_SOURCE,
-                    "filter": (
-                        "traffic_calming=table and "
-                        "(highway=crossing or footway=crossing)"
-                    ),
-                    "licence": OSM_LICENSE,
-                    "extract_snapshots": snapshots,
-                },
+            "inclusion_policy": "municipal_explicit_raised_crosswalk_in_service_v1",
+            "excluded": [
+                "OSM-derived records",
+                "generic speed tables",
+                "speed humps",
+                "raised intersections",
+                "textured crosswalks without an explicit raised classification",
+                "proposed, removed or unknown-status assets",
+                "sources without reviewed reuse terms",
             ],
+            "counts": {
+                "authoritative_inventory": len(features),
+                "total": len(features),
+                "municipal_source_records": sum(
+                    r["raw_record_count"] for r in receipts
+                ),
+                "duplicate_records_collapsed": sum(
+                    r["duplicate_records_collapsed"] for r in receipts
+                ),
+                "by_municipality": dict(
+                    sorted(
+                        Counter(
+                            f["properties"]["municipality"] for f in features
+                        ).items()
+                    )
+                ),
+            },
+            "sources": receipts,
         },
         "features": features,
     }
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--pbf-dir", type=Path, required=True)
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    dataset = build(args.pbf_dir)
+    dataset = build()  # Validate every source before touching the output snapshot.
     args.output.write_text(
         json.dumps(dataset, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
         encoding="utf-8",
     )
     print(
-        f"wrote {len(dataset['features'])} raised crosswalks to {args.output}",
+        f"wrote {len(dataset['features'])} municipal-recorded raised crosswalks to {args.output}",
         flush=True,
     )
 
